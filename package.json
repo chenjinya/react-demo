@@ -5,9 +5,14 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+<<<<<<< HEAD
     "dev": "webpack-dev-server",
     "build": "webpack --config webpack.build.config.js --colors  -d ",
     "product": "gulp"
+=======
+    "dev": "webpack-dev-server --host 0.0.0.0",
+    "build": "webpack --config webpack.build.config.js --colors  -d "
+>>>>>>> c23892bd314d1b607cc9c5ef5ebca893e7f2238b
   },
   "dependencies": {
     "autoprefixer": "~5.1",
@@ -27,6 +32,7 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.13.2",
     "css-loader": "^0.23.1",
+<<<<<<< HEAD
     "del": "^2.2.2",
     "file-loader": "^0.9.0",
     "flex.css": "^1.0.5",
@@ -44,6 +50,10 @@
     "gulp-tar": "^1.9.0",
     "gulp-uglify": "^2.0.0",
     "jshint": "^2.9.2",
+=======
+    "file-loader": "^0.9.0",
+    "jsx-loader": "^0.13.2",
+>>>>>>> c23892bd314d1b607cc9c5ef5ebca893e7f2238b
     "less-loader": "^2.2.3",
     "postcss-loader": "^0.10.0",
     "react": "^15.3.0",
