@@ -2,22 +2,19 @@ var webpack = require('webpack');
 // var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var path = require('path');
 var autoprefixer = require('autoprefixer');
+// var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   entry: {
-    main: [
-      //dev hot reload
-      'webpack-dev-server/client?http://0.0.0.0:8080',//资源服务器地址
-      'webpack/hot/only-dev-server',
-      //dev hot reload
-      path.resolve(__dirname, './app/richAnchor/main.jsx'),
-    ]
+      richAnchor: [
+        path.resolve(__dirname, './app/richAnchor/main.jsx'),
+      ]
   },
-
   output: {
-    publicPath: "http://127.0.0.1:8080/dist/",
-    //path: path.resolve(__dirname, './app/dist/'),
-    filename: "[name].js"
+      path: path.resolve(__dirname, "./app/richAnchor/dist/"),
+      publicPath: "/tb/static-ala/richAnchor/",
+      filename: "main.js"
   },
 
   module: {
@@ -45,24 +42,21 @@ module.exports = {
     ]
   },
   postcss: [ autoprefixer({ browsers: ['> 5%'] }) ],
-  devServer: {
-    hot: true,
-    host: "0.0.0.0",
-    publicPath: "http://127.0.0.1:8080/dist/",
-    contentBase: "app/richAnchor",
-    proxy: {
-      '/ala/*': {
-          target: 'http://haoyunfeng.tieba.otp.baidu.com/',
-          secure: false
-      }
-    }
-  },
-
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js'),
+    // new HtmlWebpackPlugin({  // Also generate a test.html
+    //   filename: 'index.html',
+    //   template: path.resolve(__dirname, './app/index.html')
+    // }),
+    //允许错误不打断程序
     new webpack.DefinePlugin({
-        'process.env.NODE_ENV': '"development"'
+        'process.env.NODE_ENV': '"production"'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js'),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   }
+    // }),
   ]
 };

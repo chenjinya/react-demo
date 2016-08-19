@@ -1,5 +1,7 @@
 var ReactDOM = require("react-dom");
 var React = require("react");
+// require("zepto");
+// require("./vendor/zepto.js");
 var container = document.getElementById('react-container');
 
 var App = React.createClass({
@@ -17,3 +19,5 @@ var App = React.createClass({
 ReactDOM.render(
   <App />, container
 );
+
+// console.log(Zepto("body"));
